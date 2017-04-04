@@ -1,3 +1,11 @@
+# bmsap
+
+A data processing code to process the experimental observable from heavy-ion collision, generally deal with OSCAR format file.
+
+credit of the code:
+the code was originally written by Steffen A. Bass http://www.phy.duke.edu/content/steffen-bass, 
+then modified by Shanshan Cao: https://github.com/shanshan-cao 
+
 Modified on 12/13/2013
 Extract flag_wt option into sample.in file
 Add infomation of the weight table into sample.in file
