@@ -1,0 +1,10 @@
+#!/bin/bash
+
+mkdir build
+cd build
+cmake ..
+make
+mv bms_ap.Linux ..
+cd ..
+rm -r build
+
