@@ -1,5 +1,5 @@
 cmake_minimum_required (VERSION 2.6)
-project (bms_ap.Linux)
+project (bmsap)
 
 # load Fortran compiler
 enable_language (Fortran)
