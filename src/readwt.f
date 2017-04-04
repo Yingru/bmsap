@@ -18,7 +18,7 @@
          OPEN(UNIT=10,FILE='pT*_wt.dat',STATUS='OLD',FORM='FORMATTED')
       endif
 
-      i=1
+      i=0
       do while(i.le.wt_num)
          read(unit=10,fmt=*,err=2198,end=2197) dummy_pT,pT_wt_table(i)
          pT_wt_table(i)=dummy_pT*pT_wt_table(i)
@@ -34,7 +34,7 @@ c calculate cross section of HQ production
       dsigmaOVERdy=wtsum*2d0*PI*wt_int
       write(6,*) "dsigma/dy (y=0): ",dsigmaOVERdy
 
-      i=1
+      i=0
       do while(i.le.wt_num)
          pT_wt_table(i)=pT_wt_table(i)/wtsum/wt_int
          i=i+1
@@ -58,3 +58,36 @@ c calculate cross section of HQ production
 
        end
 
+
+
+
+
+! this is a subroutine read in the rotate angle
+       subroutine read_rotation_angle
+
+       implicit none
+
+
+       include 'ucoms.f'
+       character*77 file24
+
+       file24='    '
+       call getenv('ftn24', file24)
+       if (file24(1:4) .ne. '    ') then
+         OPEN(UNIT=24, FILE=file24, STATUS='OLD', FORM='FORMATTED')
+         READ(UNIT=24, fmt=*, err=2200, end=2200) cos_pp, sin_pp
+       else
+         WRITE(6,*) "no inputs to rotate ..."
+       endif
+ 
+       write(6,*) "rotation angle set in successfully :)"
+       return
+
+ 2200  continue
+       write(6,*) "no rotation this time..."
+       return 
+
+       end
+       
+
+       

@@ -73,9 +73,14 @@ c      parameter (flag_wt = 2)
           ! 0: don't worry about weight
           ! 1: contain weight in particle list
           ! 2: need to convert initial pT into weight first
-      parameter(wt_num_MAX=140)
-      double precision pT_wt_table(wt_num_MAX)
+      parameter(wt_num_MAX=400)
+      double precision pT_wt_table(0:wt_num_MAX)
       common/wtTable1/flag_wt,wt_num
       common/wtTable2/wt_int,wt_Tab_min
       common/wtTable3/pT_wt_table
 
+
+c     analysis if we are rotated as participant plane angle/ event plane angle
+c     added by Yingru
+      double precision cos_pp, sin_pp
+      common/rotationAngle/ cos_pp, sin_pp

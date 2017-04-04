@@ -131,8 +131,8 @@ c     .           frrx(i),frry(i),frrz(i),frr0(i)
          elseif(flag_wt.eq.2) then
             dum_pT=frpz(i)
             pT_len=frp0(i)
-            wt_i=int((dum_pT-wt_Tab_min)/wt_int+1.5d0)            
-            if(wt_i.lt.1.or.wt_i.gt.wt_num) then ! debug
+            wt_i=int((dum_pT-wt_Tab_min)/wt_int+0.5d0)            
+            if(wt_i.lt.0.or.wt_i.gt.wt_num) then ! debug
                weight(i)=0d0
                write(6,*) "Warning: initial pT is out of weight range!",
      &                    "pT: ",dum_pT

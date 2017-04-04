@@ -21,7 +21,7 @@ cu      6        -0.5        0.5        0       #
 # x  observ.     minbin    maxbin    nbins
 xa  5    0.5   39.5    79
 # xa  5    0.25   4.75    13
-za  20   1     13
+za  1    1     13
 # now the end of file
 xx end
 # this is a dummy line

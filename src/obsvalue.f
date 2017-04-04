@@ -61,7 +61,7 @@ c           1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20
       goto( 1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13,14,15,16,17,18,19,20,
      &     21,22,23,24,25,26,27,28,29,30,99,99,99,99,35,36,37,38,39,40,
      &     41,42,99,99,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,
-     &     61,62,63,64,65,66,67,68,69,99,99,99,99,99,99,99,99,99,99,99,
+     &     61,62,63,64,65,66,67,68,69,70,99,99,99,99,99,99,99,99,99,99,
      &     99,99,99,99,99,99,99,99,99,99,99,99,99,99,99,99,99,99,101
      & ), obs
       goto 99
@@ -131,10 +131,15 @@ c number of time-like branchings
       goto 999
 c flow coefficient v2 (only useful when seen as average over many particles)
 c (px/pt)^2-(py/pt)^2 flow coefficient v2
+c added by Yingru: in the ebe case, we need to account for the event/participant plane angle 
+c therefore, rotate the plane
  20   if(pt(i).le.1d-10) then
          retvec(i)=0d0
       else
-         retvec(i)=(px(i)/pt(i))**2-(py(i)/pt(i))**2
+!         retvec(i)=((px(i)/pt(i))**2-(py(i)/pt(i))**2)*cos_pp + 
+!     &             2d0*(px(i)/pt(i))*(py(i)/pt(i))*sin_pp
+          retvec(i)=((py(i)/pt(i))**2-(px(i)/pt(i))**2)*cos_pp + 
+     &             2d0*(px(i)/pt(i))*(py(i)/pt(i))*sin_pp
       endif
       goto 999
 c virtuality
@@ -239,14 +244,10 @@ c Thydro: temperature of the medium
  58   retvec(i)=Thydro(i)
       goto 999
 c initial transverse momentum
- 59   retvec(i)=sqrt(frpx(i)*frpx(i)+frpy(i)*frpy(i))
+c 59   retvec(i)=sqrt(frpx(i)*frpx(i)+frpy(i)*frpy(i))
+ 59   retvec(i)=frpz(i)
       goto 999
-c initial energy (be careful, fmass may not correspond to initial particle)
-! 60   retvec(i)=sqrt(frpx(i)*frpx(i)+frpy(i)*frpy(i)
-!     &       +frpz(i)*frpz(i)+fmass(i)*fmass(i))
-!      goto 999
-
-c modified by Shanshan and Yingru, I think that's some kind of energy...
+c initial energy (depending on the information in particle list)
  60   retvec(i)=frpy(i)
       goto 999
 c weight of the initial particle
@@ -293,6 +294,9 @@ c v2 of cell velocity
  69   retvec(i)=c_vx(i)**2-c_vy(i)**2
       goto 999
 
+c initial energy - final energy (energy loss)
+ 70   retvec(i)=frpx(i)
+      goto 999
 
 c here comes a minimum spanning tree to distinguish between bound/unbound part.
  101  if(retvec(i).lt.0.) goto 999

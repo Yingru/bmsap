@@ -70,6 +70,13 @@ c debug
          endif
       endif
 
+c read in the ration angle (may be participant plane, may be the event plane)
+c added by Yingru
+      cos_pp = 1d0
+      sin_pp = 0d0
+      call read_rotation_angle
+      write(6,*) cos_pp, sin_pp
+
 c define one group in case of allpart
       if(allpart) grpsel=1
 c totev: total events; anev: analysed events

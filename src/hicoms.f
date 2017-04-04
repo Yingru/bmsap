@@ -23,7 +23,7 @@ c
       real*8 vawt(nmax)
       real*8 vavalnx(nmax),vavalny(nmax)
       real*8 zxygrd(30,nbgr,nbgr),errgrd(30,nbgr,nbgr)
-      real*8 dnsgrd1(30,nbgr,nbgr)
+      real*8 dnsgrd1(30,nbgr,nbgr),outwt(30,nbgr,nbgr)
       real*8 dxbin(30),dybin(30)
       integer dnsgrd(30,nbgr,nbgr),wsum(30),wpart(30),evcntr(30,30)
       integer cutarr(30,nmax),nopart(30),grpart(30,nmax)
@@ -40,6 +40,6 @@ c
       common /ya/yobs,ymin,ymax,ybins,dybin
       common /za/zaxis,zobs,zgrp,zunit,tstep
       common /sp/splts,scatx,scaty,scatz,scatgrp,scatunit
-      common /grids/zxygrd,errgrd,dnsgrd,dnsgrd1
+      common /grids/zxygrd,errgrd,dnsgrd,dnsgrd1,outwt
       save
 

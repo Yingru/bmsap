@@ -22,17 +22,18 @@ c
             dybin(i)=(ymax(i)-ymin(i))
          endif
  111  continue
-c           start calculation with grid                                        
+c start calculation with grid                                        
 c sab i1grdm,i2grdm muessen noch aus bbb herausgeklaut werden
-        do 6351 i=1,30                                                      
-           do 6352 j=1,nbgr
-              do 222 k=1,nbgr
-                zxygrd(i,j,k)=0.0d0                                             
-                dnsgrd(i,j,k)=0
-                dnsgrd(i,j,k)=0.0d0
-                errgrd(i,j,k)=0.0d0
- 222        continue
- 6352      continue                                                           
- 6351   continue                                                           
-         return
-         end
+      do 6351 i=1,30
+         do 6352 j=1,nbgr
+            do 222 k=1,nbgr
+              zxygrd(i,j,k)=0.0d0    
+              dnsgrd(i,j,k)=0
+              dnsgrd1(i,j,k)=0.0d0
+              errgrd(i,j,k)=0.0d0
+              outwt(i,j,k)=0.0d0
+ 222      continue
+ 6352    continue                                         
+ 6351 continue                                         
+      return
+      end
