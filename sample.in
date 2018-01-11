@@ -4,7 +4,7 @@
 ff  0       1       0        0
 # Determine whether weight is required in analysis
 #  flag_wt  wt_num  wt_int  wt_Tab_min
-wt  2       140     0.5      0.5
+wt  2       280     0.5      0.5
 # now define 3 groups for analysis
 # group 1: flag    particles
 gr         0       8
