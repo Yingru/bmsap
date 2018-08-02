@@ -27,6 +27,8 @@ set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -cpp -fno-align-commons")
 add_subdirectory (src)
 
 # install dependencies
-install (FILES sample.in sample_multi.in DESTINATION ${PROJECT_NAME})
-install (DIRECTORY spectra DESTINATION ${PROJECT_NAME})
+#install (FILES sample.in sample_multi.in DESTINATION ${PROJECT_NAME})
+#install (DIRECTORY spectra DESTINATION ${PROJECT_NAME})
+install (FILES sample.in sample_multi.in DESTINATION bin)
+install (DIRECTORY spectra DESTINATION bin)
 
