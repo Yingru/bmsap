@@ -29,6 +29,6 @@ add_subdirectory (src)
 # install dependencies
 #install (FILES sample.in sample_multi.in DESTINATION ${PROJECT_NAME})
 #install (DIRECTORY spectra DESTINATION ${PROJECT_NAME})
-install (FILES sample.in sample_multi.in DESTINATION bin)
-install (DIRECTORY spectra DESTINATION bin)
+install (FILES sample.in sample_multi.in DESTINATION results)
+install (DIRECTORY spectra DESTINATION share)
 
